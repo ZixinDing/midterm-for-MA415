@@ -328,7 +328,7 @@ dev.off()
 
 ## Top 10 most accid prone industries in MA 
 names(summary(tidydata$INDUSTRY))[1:10]
-tmptmp<-filter(tidydata, INDUSTRY==names(summary(tidydata$INDUSTRY))[1:10])
+tmptmp<-filter(tidydata, INDUSTRY%in%names(summary(tidydata$INDUSTRY))[1:10])
 t<-ggplot(tmptmp, aes(INDUSTRY))+theme(axis.text = element_text(size=8))+coord_flip()+theme_economist()+scale_colour_economist()
 t+geom_bar(fill="skyblue3")+ggtitle("Top 10 most accident prone industries in MA")
 png(filename="Top 10 most accident prone industries in MA")
@@ -337,7 +337,7 @@ dev.off()
 
 ## Top 10 industry in Boston that is most dangerous
 tmp<-filter(tidydata, PLACE=="BOSTON")
-tmp<-filter(tmp, INDUSTRY==names(summary(tmp$INDUSTRY)[1:10]))
+tmp<-filter(tmp, INDUSTRY%in%names(summary(tmp$INDUSTRY)[1:10]))
 m<-ggplot(tmp, aes(INDUSTRY))+coord_flip()+theme_economist()+scale_colour_economist()
 m+geom_bar(fill="skyblue2")+ggtitle("Top 10 most industry in Boston that are most dangerous")
 png(filename="Top 10 most industry in Boston that are most dangerous")
